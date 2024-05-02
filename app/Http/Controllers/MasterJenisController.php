@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MasterKenis;
+use App\Models\MasterJenis;
 use Illuminate\Http\Request;
 
 class MasterJenisController extends Controller
 {
     public function index()
     {
-        $jenis = MasterKenis::all();
+        $jenis = MasterJenis::all();
 
         return response()->json($jenis);
     }
@@ -20,7 +20,7 @@ class MasterJenisController extends Controller
             'urai' => 'required|max:255'
         ]);
 
-        $jenis = MasterKenis::create($request->all());
+        $jenis = MasterJenis::create($request->all());
         return($jenis);
     }
 
@@ -30,13 +30,13 @@ class MasterJenisController extends Controller
             'urai' => 'required|max:255'
         ]);
 
-        $jenis = MasterKenis::find($id);
+        $jenis = MasterJenis::find($id);
         $jenis->update($request->all());
     }
 
     public function destroy(Request $request, int $id)
     {
-        $jenis = MasterKenis::find($id);
+        $jenis = MasterJenis::find($id);
         $jenis->delete();
 
         return("delete success");
